@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center px-8 py-4 bg-white shadow">
+    <h1 class="text-2xl font-bold text-indigo-600">MyPortfolio</h1>
+    <ul class="flex space-x-6">
+      <li><a href="#about" class="hover:text-indigo-600">About</a></li>
+      <li><a href="#projects" class="hover:text-indigo-600">Projects</a></li>
+      <li><a href="#contact" class="hover:text-indigo-600">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col items-center justify-center text-center py-20 bg-gradient-to-b from-indigo-100 to-white">
+    <img src="assets/R.png" alt="Profile Photo" class="rounded-full w-40 h-40 mb-6 shadow-lg">
+    <h2 class="text-4xl font-bold mb-2">Hi, I'm John Doe 👋</h2>
+    <p class="text-lg text-gray-600 mb-6">A passionate web developer crafting modern, responsive websites.</p>
+    <a href="#projects" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">View My Work</a>
+  </section>
+
+  <!-- About Me -->
+  <section id="about" class="max-w-4xl mx-auto py-16 px-6">
+    <h3 class="text-3xl font-bold text-center mb-8">About Me</h3>
+    <p class="text-gray-700 text-lg leading-relaxed text-center">
+      I'm a creative front-end developer with a passion for building clean, user-friendly websites.
+      I enjoy turning ideas into beautiful and functional digital experiences.
+      Skilled in HTML, CSS, JavaScript, and modern frameworks.
+    </p>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="bg-gray-100 py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <h3 class="text-3xl font-bold text-center mb-10">Projects</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl shadow p-5 hover:shadow-lg transition">
+          <img src="assets/project1.png" alt="Project 1" class="rounded-lg mb-4">
+          <h4 class="text-xl font-semibold mb-2">Project One</h4>
+          <p class="text-gray-600 mb-3">A responsive website built with modern design principles.</p>
+          <a href="#" class="text-indigo-600 hover:underline">View Details →</a>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-5 hover:shadow-lg transition">
+          <img src="assets/project1.png" alt="Project 2" class="rounded-lg mb-4">
+          <h4 class="text-xl font-semibold mb-2">Project Two</h4>
+          <p class="text-gray-600 mb-3">An interactive web app showcasing data visualization skills.</p>
+          <a href="#" class="text-indigo-600 hover:underline">View Details →</a>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-5 hover:shadow-lg transition">
+          <img src="assets/project1.png" alt="Project 3" class="rounded-lg mb-4">
+          <h4 class="text-xl font-semibold mb-2">Project Three</h4>
+          <p class="text-gray-600 mb-3">A full-stack project integrating API data and user auth.</p>
+          <a href="#" class="text-indigo-600 hover:underline">View Details →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-4xl mx-auto py-16 px-6 text-center">
+    <h3 class="text-3xl font-bold mb-8">Get In Touch</h3>
+    <form class="max-w-md mx-auto space-y-4">
+      <input type="text" placeholder="Your Name" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-indigo-500" required>
+      <input type="email" placeholder="Your Email" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-indigo-500" required>
+      <textarea placeholder="Your Message" rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-indigo-500" required></textarea>
+      <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">Send Message</button>
+    </form>
+
+    <div class="mt-8 flex justify-center space-x-6">
+      <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-github"></i> GitHub</a>
+      <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fas fa-envelope"></i> Email</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 bg-gray-200 text-gray-600">
+    © 2025 Cryptoball. All rights reserved.
+  </footer>
+
+  <!-- Optional JS -->
+  <script>
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Message sent! (placeholder)');
+    });
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
