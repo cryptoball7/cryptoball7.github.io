@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Business Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://unpkg.com/lucide-static@latest/font/lucide.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <h1 class="text-2xl font-bold text-indigo-600">YourLogo</h1>
+        <nav class="space-x-6 hidden md:block">
+          <a href="#services" class="hover:text-indigo-600">Services</a>
+          <a href="#testimonials" class="hover:text-indigo-600">Testimonials</a>
+          <a href="#contact" class="hover:text-indigo-600">Contact</a>
+        </nav>
+        <button
+          id="menu-btn"
+          class="md:hidden p-2 rounded hover:bg-gray-100 focus:outline-none"
+        >
+          <i class="lucide-menu w-6 h-6"></i>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2">
+        <a href="#services" class="block hover:text-indigo-600">Services</a>
+        <a href="#testimonials" class="block hover:text-indigo-600"
+          >Testimonials</a
+        >
+        <a href="#contact" class="block hover:text-indigo-600">Contact</a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section
+      class="text-center py-20 bg-gradient-to-br from-indigo-50 to-white"
+    >
+      <h2 class="text-4xl font-bold mb-4">Welcome to Your Business</h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Providing exceptional local service with a personal touch.
+      </p>
+      <a
+        href="#contact"
+        class="bg-indigo-600 text-white px-6 py-3 rounded-full font-medium hover:bg-indigo-700"
+        >Get in Touch</a
+      >
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="max-w-6xl mx-auto py-16 px-4">
+      <h3 class="text-3xl font-bold text-center mb-12">Our Services</h3>
+      <div
+        class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 text-center"
+      >
+        <div class="p-6 bg-white rounded-2xl shadow hover:shadow-md">
+          <i class="lucide-scissors w-10 h-10 text-indigo-600 mx-auto mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Quality Haircuts</h4>
+          <p class="text-gray-600">
+            Professional stylists offering modern and classic cuts tailored to
+            you.
+          </p>
+        </div>
+        <div class="p-6 bg-white rounded-2xl shadow hover:shadow-md">
+          <i class="lucide-coffee w-10 h-10 text-indigo-600 mx-auto mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Relaxing Café</h4>
+          <p class="text-gray-600">
+            Enjoy fresh coffee, pastries, and a welcoming atmosphere.
+          </p>
+        </div>
+        <div class="p-6 bg-white rounded-2xl shadow hover:shadow-md">
+          <i class="lucide-dumbbell w-10 h-10 text-indigo-600 mx-auto mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Fitness Programs</h4>
+          <p class="text-gray-600">
+            Personalized fitness sessions designed for your lifestyle.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="bg-indigo-50 py-16">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold mb-12">What Our Clients Say</h3>
+        <div
+          class="grid gap-8 md:grid-cols-3"
+        >
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <p class="text-gray-600 italic mb-4">
+              "Amazing service! The team is so friendly and professional."
+            </p>
+            <h5 class="font-semibold">– Sarah L.</h5>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <p class="text-gray-600 italic mb-4">
+              "My go-to place for relaxation and quality. Highly recommend!"
+            </p>
+            <h5 class="font-semibold">– Michael D.</h5>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <p class="text-gray-600 italic mb-4">
+              "Fantastic experience every time. I always leave feeling great!"
+            </p>
+            <h5 class="font-semibold">– Olivia K.</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 max-w-4xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-8">Contact Us</h3>
+      <p class="text-gray-600 mb-6">
+        Have questions or want to book an appointment? Send us a message.
+      </p>
+      <form
+        class="bg-white rounded-2xl shadow p-8 max-w-lg mx-auto space-y-4"
+      >
+        <input
+          type="text"
+          placeholder="Your Name"
+          class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+        <input
+          type="email"
+          placeholder="Your Email"
+          class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+        <textarea
+          rows="4"
+          placeholder="Your Message"
+          class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        ></textarea>
+        <button
+          type="submit"
+          class="bg-indigo-600 text-white px-6 py-3 rounded-full font-medium hover:bg-indigo-700"
+        >
+          Send Message
+        </button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8 text-center">
+      <p>&copy; 2025 Your Business Name. All rights reserved.</p>
+    </footer>
+
+    <!-- JS: Mobile menu toggle -->
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
