@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Navbar -->
+    <header class="bg-white shadow-sm">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-indigo-600">BrandName</h1>
+        <nav class="hidden md:flex space-x-6">
+          <a href="#features" class="hover:text-indigo-600">Features</a>
+          <a href="#pricing" class="hover:text-indigo-600">Pricing</a>
+          <a href="#contact" class="hover:text-indigo-600">Contact</a>
+        </nav>
+        <button class="md:hidden p-2 border rounded">☰</button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-1">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Experience the Future of <span class="text-indigo-600">Innovation</span>
+        </h2>
+        <p class="text-lg text-gray-600 mb-6">
+          Our product revolutionizes the way you connect, create, and grow. Designed for creators, teams, and dreamers.
+        </p>
+        <button class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
+          Get Started
+        </button>
+      </div>
+      <div class="flex-1">
+        <img
+          src="assets/product.jpg"
+          alt="Product Mockup"
+          class="rounded-xl shadow-lg w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="bg-white py-20">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h3 class="text-3xl font-bold mb-12">Why Choose Our Product?</h3>
+
+        <div class="grid md:grid-cols-3 gap-10">
+          <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition">
+            <div class="text-indigo-600 text-4xl mb-4">⚡</div>
+            <h4 class="text-xl font-semibold mb-2">Fast & Efficient</h4>
+            <p class="text-gray-600">Built for performance and speed, so you can get things done without delay.</p>
+          </div>
+          <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition">
+            <div class="text-indigo-600 text-4xl mb-4">🔒</div>
+            <h4 class="text-xl font-semibold mb-2">Secure by Design</h4>
+            <p class="text-gray-600">Your data stays protected with enterprise-level encryption and privacy tools.</p>
+          </div>
+          <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition">
+            <div class="text-indigo-600 text-4xl mb-4">✨</div>
+            <h4 class="text-xl font-semibold mb-2">Beautiful Interface</h4>
+            <p class="text-gray-600">Enjoy an elegant, intuitive UI crafted for simplicity and delight.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing / CTA Section -->
+    <section id="pricing" class="bg-indigo-600 text-white py-20">
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <h3 class="text-3xl font-bold mb-6">Simple, Transparent Pricing</h3>
+        <p class="mb-10 text-indigo-100">Get started today with our flexible plan — no hidden fees.</p>
+
+        <div class="bg-white text-gray-800 rounded-2xl shadow-lg p-10 max-w-md mx-auto">
+          <h4 class="text-2xl font-semibold mb-4">Pro Plan</h4>
+          <p class="text-4xl font-bold mb-4">$29<span class="text-lg text-gray-500">/mo</span></p>
+          <ul class="text-gray-600 mb-8 space-y-2">
+            <li>✅ Unlimited access</li>
+            <li>✅ Premium features</li>
+            <li>✅ 24/7 support</li>
+          </ul>
+          <button class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition">
+            Start Free Trial
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 text-center py-6 mt-10">
+      <p>© 2025 Cryptoball. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Example JS: toggle mobile menu
+      const btn = document.querySelector('header button');
+      const nav = document.querySelector('nav');
+      btn.addEventListener('click', () => nav.classList.toggle('hidden'));
+    </script>
+  </body>
+</html>
