@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Artist / Photographer Portfolio — Minimal Masonry Gallery</title>
+  <meta name="description" content="Minimal portfolio with masonry gallery, lightbox and About the Artist section (placeholder content)." />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Extra small visual adjustments */
+    .photo {
+      width: 100%;
+      display: block;
+      cursor: zoom-in;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .photo:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(2,6,23,0.08); }
+    figure { margin: 0 0 1rem; }
+    /* prevent items from breaking across columns for masonry effect */
+    .masonry-item { break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid; }
+    /* Lightbox styles */
+    .lightbox { background: rgba(2,6,23,0.85); }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased leading-relaxed">
+  <header class="max-w-6xl mx-auto p-6 md:p-12">
+    <div class="flex items-center justify-between gap-6">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-semibold">Alex Rowan</h1>
+        <p class="text-sm text-slate-500">Artist & Photographer — Visual storytelling through light and composition</p>
+      </div>
+      <nav class="hidden md:flex gap-6 text-sm text-slate-600">
+        <a href="#gallery" class="hover:underline">Gallery</a>
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 pb-20">
+    <!-- Intro / Hero -->
+    <section class="mb-10">
+      <div class="flex flex-col md:flex-row items-start gap-6">
+        <div class="flex-1">
+          <h2 id="gallery" class="text-3xl md:text-4xl font-extralight mb-2">Selected Works</h2>
+          <p class="text-slate-600 max-w-2xl">A quiet selection of images exploring texture, negative space and natural light. Click any image to open a lightbox with captions and keyboard navigation.</p>
+        </div>
+        <div class="w-full md:w-64 flex-shrink-0 text-sm text-slate-500">
+          <p class="mb-2"><strong>Tip</strong>: Use ← and → to navigate the lightbox. Press Esc or click outside to close.</p>
+          <p class="mb-0">All images are placeholders (picsum). Replace with your own high-res images.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Masonry gallery -->
+    <section>
+      <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
+
+        <!-- Repeatable item: update src to your images -->
+        <figure class="masonry-item">
+          <img data-index="0" src="https://picsum.photos/id/1015/800/1200" alt="Placeholder 1" class="photo rounded-lg" loading="lazy" />
+          <figcaption class="text-xs text-slate-500 mt-1">Mountain light — 2024 — 24x36</figcaption>
+        </figure>
+
+        <figure class="masonry-item">
+          <img data-index="1" src="https://picsum.photos/id/1021/800/1000" alt="Placeholder 2" class="photo rounded-lg" loading="lazy" />
+          <figcaption class="text-xs text-slate-500 mt-1">Shoreline study — 2023 — silver gelatin</figcaption>
+        </figure>
+
+        <figure class="masonry-item">
+          <img data-index="2" src="https://picsum.photos/id/1032/800/900" alt="Placeholder 3" class="photo rounded-lg" loading="lazy" />
+          <figcaption class="text-xs text-slate-500 mt-1">Urban window — 2022 — digital</figcaption>
+        </figure>
+
+        <figure class="masonry-item">
+          <img data-index="3" src="https://picsum.photos/id/1043/800/1100" alt="Placeholder 4" class="photo rounded-lg" loading="lazy" />
+          <figcaption class="text-xs text-slate-500 mt-1">Quiet interior — 2024 — 16x20</figcaption>
+        </figure>
+
+        <figure class="masonry-item">
+          <img data-index="4" src="https://picsum.photos/id/1052/800/1200" alt="Placeholder 5" class="photo rounded-lg" loading="lazy" />
+          <figcaption class="text-xs text-slate-500 mt-1">Fog study — 2021 — color film</figcaption>
+        </figure>
+
+        <figure class="masonry-item">
+          <img data-index="5" src="https://picsum.photos/id/1067/800/1000" alt="Placeholder 6" class="photo rounded-lg" loading="lazy" />
+          <figcaption class="text-xs text-slate-500 mt-1">Still life — 2020 — archival print</figcaption>
+        </figure>
+
+        <figure class="masonry-item">
+          <img data-index="6" src="https://picsum.photos/id/1074/800/900" alt="Placeholder 7" class="photo rounded-lg" loading="lazy" />
+          <figcaption class="text-xs text-slate-500 mt-1">Desert geometry — 2019 — large format</figcaption>
+        </figure>
+
+        <figure class="masonry-item">
+          <img data-index="7" src="https://picsum.photos/id/1082/800/1100" alt="Placeholder 8" class="photo rounded-lg" loading="lazy" />
+          <figcaption class="text-xs text-slate-500 mt-1">Night traces — 2024 — long exposure</figcaption>
+        </figure>
+
+        <!-- add/remove more items as needed -->
+      </div>
+    </section>
+
+    <!-- About the Artist -->
+    <section id="about" class="mt-16 border-t pt-10">
+      <div class="md:flex md:items-start md:gap-8">
+        <div class="w-full md:w-48 flex-none">
+          <img src="https://picsum.photos/seed/portrait/400/400" alt="Artist portrait placeholder" class="rounded-2xl shadow-lg w-full object-cover" />
+        </div>
+        <div class="mt-6 md:mt-0 flex-1">
+          <h3 class="text-xl font-medium mb-2">About the Artist</h3>
+          <p class="text-slate-600 mb-3">Alex Rowan (b. 1990) explores the intersection of quiet moments and strong geometry. Working primarily with natural light, Alex composes images that prioritize negative space and tactile detail. The practice mixes analog and digital workflows; recent projects investigate abandoned domestic interiors and coastal morphology.</p>
+          <ul class="text-sm text-slate-500 list-disc pl-5">
+            <li>Available for commissions & exhibitions</li>
+            <li>Portfolio prints and limited editions</li>
+            <li>Representative: Minimal Gallery (placeholder)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="mt-16 text-sm text-slate-500">
+      <div class="border-t pt-6 flex flex-col md:flex-row md:items-center md:justify-between">
+        <p class="mb-4 md:mb-0">Email: <a href="mailto:hello@example.com" class="underline">hello@example.com</a> — IG: <a href="#" class="underline">@alexrowan</a></p>
+        <p>© <span id="year"></span> Alex Rowan</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lightbox markup (hidden by default) -->
+  <div id="lightbo
