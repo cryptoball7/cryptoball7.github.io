@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coming Soon — Placeholder</title>
+  <!-- Tailwind CDN (for quick prototype) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* subtle animated gradient background + optional background image */
+    :root{--overlay:rgba(7,11,23,0.55)}
+    body{
+      min-height:100vh;
+      background-image: linear-gradient(120deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder');
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+    }
+    /* animated gradient overlay */
+    .gradient-anim{
+      background: linear-gradient(270deg,#0f172a,#0ea5a0,#7c3aed,#ef4444);
+      background-size: 800% 800%;
+      animation: Gradient 18s ease infinite;
+      mix-blend-mode: screen;
+      opacity:0.12;
+    }
+    @keyframes Gradient {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    /* glass card subtle blur */
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
+  </style>
+</head>
+<body class="antialiased text-slate-100">
+  <div class="absolute inset-0 gradient-anim pointer-events-none"></div>
+
+  <main class="min-h-screen flex items-center justify-center p-6">
+    <section class="max-w-3xl w-full glass rounded-2xl border border-white/8 shadow-2xl overflow-hidden">
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <!-- left: content -->
+        <div class="p-10 md:p-12">
+          <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">We’re launching soon</h1>
+          <p class="text-slate-300 mb-6">Something exciting is being built. Sign up below and we'll let you know when we go live.</p>
+
+          <!-- countdown -->
+          <div class="mb-6">
+            <div id="countdown" class="flex gap-3 sm:gap-4 items-center">
+              <!-- digits will be injected here -->
+            </div>
+            <p class="mt-3 text-sm text-slate-400">Target launch date: <span id="targetDate" class="font-medium"></span></p>
+          </div>
+
+          <!-- newsletter -->
+          <form id="newsletter" class="flex flex-col sm:flex-row gap-3" action="#" onsubmit="return handleNewsletter(event)">
+            <label for="email" class="sr-only">Email address</label>
+            <input id="email" type="email" required placeholder="Your email" class="flex-1 px-4 py-3 rounded-lg bg-white/6 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400" />
+            <button type="submit" class="px-5 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white font-medium">Notify me</button>
+          </form>
+
+          <p id="signupMessage" class="mt-3 text-sm text-slate-300"></p>
+
+          <div class="mt-6 text-slate-400 text-sm">
+            <p>Meanwhile, follow us on <a href="#" class="text-emerald-300 underline">Twitter</a> or <a href="#" class="text-emerald-300 underline">Instagram</a>.</p>
+          </div>
+        </div>
+
+        <!-- right: visual / illustration -->
+        <div class="hidden md:flex items-center justify-center p-8 bg-gradient-to-br from-transparent to-black/20">
+          <div class="w-full h-full flex items-center justify-center">
+            <div class="rounded-xl p-6 bg-white/3 border border-white/6 text-center">
+              <svg width="120" height="120" viewBox="0 0 24 24" fill="none" class="mx-auto mb-4">
+                <path d="M12 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 12h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 20v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3 class="text-xl font-semibold">Under construction</h3>
+              <p class="mt-2 text-slate-300 text-sm">A few finishing touches and we’ll be ready.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="px-6 py-4 text-center text-xs text-slate-400 border-t border-white/6">
+        © <span id="year"></span> Cryptoball. All rights reserved.
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // ===== Configuration =====
+    // Set your target launch date here (YYYY, MM-1, DD, HH, MM, SS)
+    // e.g. new Date(2026, 0, 1) -> Jan 1 2026 00:00
+    const LAUNCH_DATE = new Date();
+    LAUNCH_DATE.setDate(LAUNCH_DATE.getDate() + 30); // default: 30 days from now
+
+    // ===== Utilities =====
+    function pad(n){ return String(n).padStart(2,'0'); }
+
+    // ===== Countdown =====
+    const targetDateEl = document.getElementById('targetDate');
+    const countdownEl = document.getElementById('countdown');
+    function renderCountdown(){
+      const now = new Date();
+      let diff = Math.max(0, LAUNCH_DATE - now);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * (1000 * 60 * 60 * 24);
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * (1000 * 60 * 60);
+      const minutes = Math.floor(diff / (1000 * 60));
+      diff -= minutes * (1000 * 60);
+      const seconds = Math.floor(diff / 1000);
+
+      countdownEl.innerHTML = `
+        ${timeBlock(days,'Days')}
+        ${timeBlock(hours,'Hours')}
+        ${timeBlock(minutes,'Minutes')}
+        ${timeBlock(seconds,'Seconds')}
+      `;
+
+      if (LAUNCH_DATE - now <= 0) {
+        clearInterval(timerInterval);
+        // optional: show launched state
+        document.querySelector('h1').textContent = "We\'re live!";
+        document.getElementById('signupMessage').textContent = "Thanks — we've launched. Check back soon for more.";
+      }
+    }
+
+    function timeBlock(value,label){
+      return `
+        <div class="bg-white/3 px-3 py-2 rounded-lg min-w-[64px] text-center">
+          <div class="text-xl font-semibold">${pad(value)}</div>
+          <div class="text-xs text-slate-300">${label}</div>
+        </div>
+      `;
+    }
+
+    renderCountdown();
+    const timerInterval = setInterval(renderCountdown, 1000);
+
+    targetDateEl.textContent = LAUNCH_DATE.toLocaleString();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Newsletter (placeholder) =====
+    function handleNewsletter(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('signupMessage');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        msg.textContent = 'Please enter a valid email address.';
+        return false;
+      }
+
+      // Simulate an API call (replace with your endpoint)
+      msg.textContent = 'Sending...';
+      setTimeout(()=>{
+        msg.textContent = `Thanks — ${email} has been added to our list.`;
+        document.getElementById('newsletter').reset();
+      }, 900);
+
+      return false;
+    }
+  </script>
+</body>
+</html>
