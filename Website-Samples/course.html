@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Course Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Hero Section -->
+  <section class="bg-blue-600 text-white py-20">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Master Modern Web Development</h1>
+      <p class="text-lg mb-6">Join thousands of students learning to build stunning websites and apps from scratch.</p>
+      <a href="#enroll" class="bg-white text-blue-600 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition">Enroll Now</a>
+    </div>
+  </section>
+
+  <!-- Course Details -->
+  <section class="py-16 max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-10">What You’ll Learn</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-md p-6 rounded-2xl">
+        <h3 class="font-semibold text-xl mb-2">HTML, CSS & JavaScript</h3>
+        <p class="text-gray-600">Learn the building blocks of the web and create beautiful, interactive web pages.</p>
+      </div>
+      <div class="bg-white shadow-md p-6 rounded-2xl">
+        <h3 class="font-semibold text-xl mb-2">Frontend Frameworks</h3>
+        <p class="text-gray-600">Master React and Tailwind to build modern, scalable web apps.</p>
+      </div>
+      <div class="bg-white shadow-md p-6 rounded-2xl">
+        <h3 class="font-semibold text-xl mb-2">Deployment & Hosting</h3>
+        <p class="text-gray-600">Learn how to deploy your projects to the web using industry-standard tools.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructor Section -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
+      <img src="https://via.placeholder.com/400x400" alt="Instructor Photo" class="rounded-2xl shadow-md mx-auto md:mx-0">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Meet Your Instructor</h2>
+        <p class="text-gray-600 mb-4">Hi, I’m <strong>Jane Doe</strong> — a full-stack developer and online educator with over 10 years of experience. I’ve helped 50,000+ students worldwide kickstart their tech careers.</p>
+        <p class="text-gray-600">Through this course, I’ll guide you step-by-step, from beginner to confident developer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enrollment Section -->
+  <section id="enroll" class="py-20 text-center bg-blue-600 text-white">
+    <h2 class="text-4xl font-bold mb-4">Ready to Start Learning?</h2>
+    <p class="text-lg mb-6">Enroll today and get lifetime access to all course materials, projects, and updates.</p>
+    <button class="bg-white text-blue-600 font-semibold px-10 py-3 rounded-full hover:bg-gray-100 transition">Enroll Now</button>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 max-w-4xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+
+      <!-- FAQ Item -->
+      <div class="bg-white shadow-md rounded-2xl p-4">
+        <button class="w-full text-left font-semibold flex justify-between items-center" onclick="toggleFAQ(this)">
+          <span>How long will I have access to the course?</span>
+          <span class="text-xl">+</span>
+        </button>
+        <p class="text-gray-600 mt-2 hidden">You’ll get lifetime access to the course, including future updates and new lessons.</p>
+      </div>
+
+      <div class="bg-white shadow-md rounded-2xl p-4">
+        <button class="w-full text-left font-semibold flex justify-between items-center" onclick="toggleFAQ(this)">
+          <span>Do I need prior experience?</span>
+          <span class="text-xl">+</span>
+        </button>
+        <p class="text-gray-600 mt-2 hidden">No prior experience is required — we’ll start from the basics and build up gradually.</p>
+      </div>
+
+      <div class="bg-white shadow-md rounded-2xl p-4">
+        <button class="w-full text-left font-semibold flex justify-between items-center" onclick="toggleFAQ(this)">
+          <span>Is there a certificate upon completion?</span>
+          <span class="text-xl">+</span>
+        </button>
+        <p class="text-gray-600 mt-2 hidden">Yes! You’ll receive a digital certificate that you can share on LinkedIn or your portfolio.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+    <p>© 2025 Cryptoball cryptoball7@gmail.com. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for FAQ -->
+  <script>
+    function toggleFAQ(button) {
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector('span:last-child');
+      answer.classList.toggle('hidden');
+      icon.textContent = answer.classList.contains('hidden') ? '+' : '−';
+    }
+  </script>
+
+</body>
+</html>
