@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cryptoball — Simple websites for small businesses</title>
+  <meta name="description" content="Cryptoball builds fast, affordable one-page websites for local small businesses. Launch in days — not weeks." />
+  <meta name="theme-color" content="#0ea5a4" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- replace with your favicon -->
+
+  <!-- Tailwind CDN (for development / quick prototypes). Replace with a built CSS in production. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config (custom colors, container)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0ea5a4',
+            accent: '#2563eb'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* quick accessible focus style */
+    :root { --brand: #0ea5a4; }
+    .focus-ring:focus { outline: 3px solid rgba(14,165,164,0.25); outline-offset: 2px; }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-gradient-to-b from-white to-slate-50 min-h-screen">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <div class="container mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white font-bold">BS</div>
+        <div>
+          <h1 class="text-lg font-semibold">Cryptoball</h1>
+          <p class="text-xs text-slate-500 -mt-0.5">websites for small businesses</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#services" class="hover:text-slate-900">Services</a>
+        <a href="#portfolio" class="hover:text-slate-900">Portfolio</a>
+        <a href="#pricing" class="hover:text-slate-900">Pricing</a>
+        <a href="#contact" class="hover:text-slate-900">Contact</a>
+        <button id="quoteBtn" class="ml-2 px-4 py-2 rounded-md bg-accent text-white text-sm shadow hover:brightness-95">Get a quote</button>
+      </nav>
+
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md focus-ring">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobileNav" class="md:hidden hidden border-t border-slate-100 bg-white">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="#services" class="py-2">Services</a>
+        <a href="#portfolio" class="py-2">Portfolio</a>
+        <a href="#pricing" class="py-2">Pricing</a>
+        <a href="#contact" class="py-2">Contact</a>
+        <button id="mobileQuote" class="mt-2 px-4 py-2 rounded-md bg-accent text-white">Get a quote</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="pt-10">
+    <section class="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div class="max-w-xl">
+        <p class="text-sm uppercase tracking-wide text-slate-500">Local-focused — Fast turnaround</p>
+        <h2 class="mt-3 text-4xl sm:text-5xl font-extrabold leading-tight">Simple, beautiful websites that help small businesses get customers.</h2>
+        <p class="mt-4 text-slate-600">One-page sites, clear messaging, and the essentials: contact, services, and directions. Designed for busy owners who want results — not complexity.</p>
+
+        <div class="mt-6 flex gap-4">
+          <a href="#contact" class="inline-flex items-center gap-3 px-5 py-3 rounded-md bg-primary text-white font-semibold shadow hover:brightness-95">Start your site</a>
+          <a href="#portfolio" class="inline-flex items-center gap-2 px-4 py-3 rounded-md border border-slate-200 hover:bg-slate-50">See examples</a>
+        </div>
+
+        <ul class="mt-6 grid grid-cols-2 gap-3 text-sm text-slate-600">
+          <li>✔️ SEO-friendly structure</li>
+          <li>✔️ Mobile-first design</li>
+          <li>✔️ Fast load times</li>
+          <li>✔️ Easy updates</li>
+        </ul>
+
+        <div class="mt-6 text-xs text-slate-500">Need a logo or photos? We partner with local photographers and designers to keep everything affordable.</div>
+      </div>
+
+      <div class="relative">
+        <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-50 to-white border border-slate-100 shadow-lg">
+          <img alt="example website preview" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" class="w-full rounded-lg object-cover shadow-sm max-h-80" />
+
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <div class="p-3 bg-white rounded-lg border">
+              <h4 class="text-xs font-semibold">Small bakery</h4>
+              <p class="text-xs text-slate-500">Online menu + contact + map</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg border">
+              <h4 class="text-xs font-semibold">Plumbing</h4>
+              <p class="text-xs text-slate-500">Service list + 24/7 call button</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="mt-16 container mx-auto px-6 lg:px-12">
+      <h3 class="text-2xl font-semibold">What we build</h3>
+      <p class="mt-2 text-slate-600 max-w-2xl">Clear, conversion-focused sites tailored to your business. We keep features simple and impactful.</p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-5 bg-white rounded-xl border">
+          <h4 class="font-semibold">One-page website</h4>
+          <p class="text-sm text-slate-500 mt-2">Hero, services, testimonials, contact, Google map.</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border">
+          <h4 class="font-semibold">Local SEO</h4>
+          <p class="text-sm text-slate-500 mt-2">Optimized meta tags, schema, and Google Business Profile tips.</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border">
+          <h4 class="font-semibold">Booking & forms</h4>
+          <p class="text-sm text-slate-500 mt-2">Simple appointment forms or booking links integrated.</p>
+        </div>
+        <div class="p-5 bg-white rounded-xl border">
+          <h4 class="font-semibold">Updates & hosting</h4>
+          <p class="text-sm text-slate-500 mt-2">Optional maintenance plans and fast hosting setup.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="mt-16 container mx-auto px-6 lg:px-12">
+      <h3 class="text-2xl font-semibold">Recent sites</h3>
+      <p class="mt-2 text-slate-600">A few quick examples — real sites launched in days.</p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-xl overflow-hidden border">
+          <img src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="portfolio 1" class="w-full h-36 object-cover">
+          <div class="p-4">
+            <h4 class="font-semibold">Green Leaf Bakery</h4>
+            <p class="text-sm text-slate-500 mt-1">Menu, hours, and online ordering link.</p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white rounded-xl overflow-hidden border">
+          <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="portfolio 2" class="w-full h-36 object-cover">
+          <div class="p-4">
+            <h4 class="font-semibold">Main Street Plumbing</h4>
+            <p class="text-sm text-slate-500 mt-1">Service list and emergency contact button.</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white rounded-xl overflow-hidden border">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="portfolio 3" class="w-full h-36 object-cover">
+          <div class="p-4">
+            <h4 class="font-semibold">Bright Tattoo Studio</h4>
+            <p class="text-sm text-slate-500 mt-1">Portfolio gallery and contact form.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="mt-16 container mx-auto px-6 lg:px-12">
+      <h3 class="text-2xl font-semibold">Simple pricing</h3>
+      <p class="mt-2 text-slate-600">Transparent, flat pricing that fits small budgets.</p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="p-6 rounded-xl border bg-white">
+          <div class="text-sm uppercase text-slate-500">Starter</div>
+          <div class="mt-2 text-3xl font-bold">$499</div>
+          <div class="mt-2 text-sm text-slate-600">One-page site — launch in 3–5 days</div>
+          <ul class="mt-4 text-sm text-slate-600 space-y-2">
+            <li>Domain & hosting setup guide</li>
+            <li>Basic SEO</li>
+            <li>Contact form</li>
+          </ul>
+          <button class="mt-6 w-full py-2 rounded-md bg-primary text-white">Choose</button>
+        </div>
+
+        <div class="p-6 rounded-xl border bg-white">
+          <div class="text-sm uppercase text-slate-500">Pro</div>
+          <div class="mt-2 text-3xl font-bold">$899</div>
+          <div class="mt-2 text-sm text-slate-600">Multi-section site + booking</div>
+          <ul class="mt-4 text-sm text-slate-600 space-y-2">
+            <li>Custom copy tweaks</li>
+            <li>Booking/appointment integration</li>
+            <li>1 month minor updates</li>
+          </ul>
+          <button class="mt-6 w-full py-2 rounded-md bg-accent text-white">Choose</button>
+        </div>
+
+        <div class="p-6 rounded-xl border bg-white">
+          <div class="text-sm uppercase text-slate-500">Maintain</div>
+          <div class="mt-2 text-3xl font-bold">$49/mo</div>
+          <div class="mt-2 text-sm text-slate-600">Optional ongoing updates & backups</div>
+          <ul class="mt-4 text-sm text-slate-600 space-y-2">
+            <li>Monthly content updates</li>
+            <li>Uptime & backups</li>
+            <li>Priority support</li>
+          </ul>
+          <button class="mt-6 w-full py-2 rounded-md border">Learn more</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mt-16 container mx-auto px-6 lg:px-12 pb-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-2xl font-semibold">Get a free quote</h3>
+          <p class="mt-2 text-slate-600">Tell us a bit about your business and we'll reply with a clear plan and cost estimate.</p>
+
+          <form id="contactForm" class="mt-6 space-y-4 bg-white p-6 rounded-xl border" novalidate>
+            <div>
+              <label class="block text-sm font-medium">Business name</label>
+              <input name="business" required class="mt-1 w-full p-3 rounded-md border focus-ring" placeholder="e.g. Smith Family Bakery" />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium">Your name</label>
+              <input name="name" required class="mt-1 w-full p-3 rounded-md border focus-ring" placeholder="e.g. Jane Smith" />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium">Email</label>
+              <input type="email" name="email" required class="mt-1 w-full p-3 rounded-md border focus-ring" placeholder="you@business.com" />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium">Message</label>
+              <textarea name="message" rows="4" required class="mt-1 w-full p-3 rounded-md border focus-ring" placeholder="Tell us what you need..."></textarea>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button type="submit" class="px-4 py-2 rounded-md bg-accent text-white">Send request</button>
+              <div id="formStatus" class="text-sm text-slate-600"></div>
+            </div>
+
+            <p class="text-xs text-slate-500">By sending you agree to be contacted. We won't spam — promise.</p>
+          </form>
+        </div>
+
+        <div class="order-first lg:order-last">
+          <div class="bg-white p-6 rounded-xl border">
+            <h4 class="font-semibold">Quick info</h4>
+            <p class="mt-2 text-sm text-slate-600">Phone: <a href="tel:+15555555555" class="text-accent">(555) 555-5555</a></p>
+            <p class="mt-1 text-sm text-slate-600">Email: <a href="mailto:hello@Cryptoball.example" class="text-accent">hello@Cryptoball.example</a></p>
+
+            <dl class="mt-4 grid grid-cols-2 gap-3 text-sm">
+              <div>
+                <dt class="text-slate-500">Turnaround</dt>
+                <dd class="font-medium">3–5 days</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500">Support</dt>
+                <dd class="font-medium">email & phone</dd>
+              </div>
+            </dl>
+
+            <div class="mt-4 text-sm text-slate-500">We provide a simple handoff guide so you can manage your site, or we can keep it updated for you.</div>
+          </div>
+
+          <div class="mt-6 text-sm text-slate-500">Want a faster response? Click <button id="startChat" class="inline text-accent underline">Start chat</button> to open a quick message box.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t mt-12">
+    <div class="container mx-auto px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-sm text-slate-600">© <span id="year"></span> Cryptoball — Simple websites for local businesses.</div>
+      <div class="flex gap-4 text-sm">
+        <a href="#" class="hover:underline">Privacy</a>
+        <a href="#" class="hover:underline">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal / Chat box (simple) -->
+  <div id="chatModal" class="fixed inset-0 flex items-end md:items-center justify-center p-4 pointer-events-none">
+    <div class="w-full max-w-md bg-white rounded-xl border shadow-lg p-4 pointer-events-auto hidden" role="dialog" aria-modal="true">
+      <div class="flex justify-between items-center">
+        <h4 class="font-semibold">Quick message</h4>
+        <button id="closeChat" class="p-1 focus-ring">✕</button>
+      </div>
+      <form id="chatForm" class="mt-3 space-y-3">
+        <input name="name" placeholder="Your name" class="w-full p-2 rounded-md border" />
+        <input name="email" placeholder="Email" class="w-full p-2 rounded-md border" />
+        <textarea name="message" rows="4" placeholder="How can we help?" class="w-full p-2 rounded-md border"></textarea>
+        <div class="flex justify-end">
+          <button type="submit" class="px-4 py-2 rounded-md bg-primary text-white">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // small interactive behaviors
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile nav
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    mobileMenuBtn.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
+
+    // modals & chat
+    const chatModalWrap = document.getElementById('chatModal');
+    const chatModal = chatModalWrap.querySelector('[role="dialog"]');
+    document.getElementById('startChat').addEventListener('click', () => chatModal.classList.remove('hidden'));
+    document.getElementById('closeChat').addEventListener('click', () => chatModal.classList.add('hidden'));
+
+    // Quote buttons scroll
+    document.getElementById('quoteBtn').addEventListener('click', () => document.getElementById('contact').scrollIntoView({behavior:'smooth'}));
+    document.getElementById('mobileQuote').addEventListener('click', () => document.getElementById('contact').scrollIntoView({behavior:'smooth'}));
+
+    // contact form handling (no backend) — demo only
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      const payload = Object.fromEntries(data.entries());
+      // Basic validation
+      if(!payload.email || !payload.name || !payload.business) {
+        formStatus.textContent = 'Please complete required fields.';
+        return;
+      }
+      // In a real site you'd POST this to your server or an email service. For the demo we show the payload.
+      formStatus.textContent = 'Thanks — we received your request!';
+      contactForm.querySelector('button[type="submit"]').disabled = true;
+
+      // copy to clipboard as a convenience for demo/testing
+      try {
+        navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+      } catch (err) {
+        // ignore
+      }
+    });
+
+    // chat form (demo)
+    document.getElementById('chatForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thanks! We will reply shortly. (This demo doesn\'t actually send messages.)');
+      chatModal.classList.add('hidden');
+    });
+
+    // Accessibility: close chat with Escape
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') chatModal.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
