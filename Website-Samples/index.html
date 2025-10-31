@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Showcase</title>
+  <title>Website Showcase</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .project-card:hover .overlay {
@@ -20,7 +20,7 @@
 <body class="bg-gray-50 text-gray-800 font-sans">
 
   <header class="py-10 text-center">
-    <h1 class="text-4xl font-bold mb-2">Client Project Samples</h1>
+    <h1 class="text-4xl font-bold mb-2">Website Samples</h1>
     <p class="text-gray-500">Click any project to view its live demo</p>
   </header>
 
@@ -49,16 +49,18 @@
       card.href = `${name}.html`;
       card.className = "project-card relative group block bg-white rounded-2xl shadow hover:shadow-xl overflow-hidden transition";
       card.innerHTML = `
+        <div>
         <div class="relative">
           <img src="screenshots/${name}-desktop.png" alt="${name} desktop preview" class="w-full h-48 object-cover">
-          <div class="overlay absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 transition">
-            <img src="screenshots/${name}-desktop.png" alt="${name} desktop" class="w-1/2 rounded-md shadow-lg">
-            <img src="screenshots/${name}-mobile.png" alt="${name} mobile" class="w-1/4 rounded-md shadow-lg">
-          </div>
         </div>
         <div class="p-4">
           <h2 class="text-xl font-semibold capitalize">${name}</h2>
           <p class="text-gray-500 text-sm">View ${name} demo</p>
+        </div>
+          <div class="overlay absolute inset-0 bg-black/60 flex items-center justify-center gap-4 opacity-0 transition">
+            <img src="screenshots/${name}-desktop.png" alt="${name} desktop" class="w-1/2 rounded-md shadow-lg">
+            <img src="screenshots/${name}-mobile.png" alt="${name} mobile" class="w-1/4 rounded-md shadow-lg">
+          </div>
         </div>
       `;
       container.appendChild(card);
