@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bright Tattoo Studio</title>
+  <meta name="description" content="Bright Tattoo Studio — bold custom tattoos. Portfolio gallery & contact." />
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config: custom colors
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bright: {
+              50: '#fffef6',
+              100: '#fff6df',
+              500: '#ff5a7a',
+              700: '#e63b5b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Small UI polish for the lightbox backdrop transition */
+    .backdrop-blur { backdrop-filter: blur(6px); }
+  </style>
+</head>
+<body class="antialiased text-gray-800 bg-gradient-to-b from-white via-gray-50 to-gray-100">
+  <!-- NAV -->
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-bright-500 to-purple-500 flex items-center justify-center text-white font-bold shadow-md">BT</div>
+        <div>
+          <h1 class="text-lg font-semibold">Bright Tattoo Studio</h1>
+          <p class="text-xs text-gray-500 -mt-1">Bold — Custom — Clean</p>
+        </div>
+      </a>
+      <nav class="hidden md:flex gap-6 items-center text-sm">
+        <a href="#portfolio" class="hover:text-bright-700">Portfolio</a>
+        <a href="#about" class="hover:text-bright-700">About</a>
+        <a href="#contact" class="px-4 py-2 bg-bright-500 text-white rounded-md shadow hover:bg-bright-700">Book / Contact</a>
+      </nav>
+      <button id="mobileMenuBtn" aria-label="Open menu" class="md:hidden p-2 rounded-md hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-6">
+      <a href="#portfolio" class="block py-2">Portfolio</a>
+      <a href="#about" class="block py-2">About</a>
+      <a href="#contact" class="block py-2 text-white bg-bright-500 rounded-md px-4 py-2 inline-block">Book / Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="max-w-6xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center gap-12">
+    <div class="md:w-1/2">
+      <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">Bright Tattoo Studio</h2>
+      <p class="mt-4 text-gray-600">Custom tattoos with clean lines, bold color, and careful aftercare guidance. Walk-ins welcome; appointments recommended.</p>
+      <div class="mt-6 flex gap-3">
+        <a href="#portfolio" class="px-5 py-3 bg-bright-500 text-white rounded-md shadow hover:bg-bright-700">See Portfolio</a>
+        <a href="#contact" class="px-5 py-3 border border-gray-200 rounded-md">Contact / Book</a>
+      </div>
+      <ul class="mt-8 grid grid-cols-2 gap-4 text-sm text-gray-600">
+        <li>• Custom flash & cover-ups</li>
+        <li>• Sterile studio — experienced artists</li>
+        <li>• Aftercare support</li>
+        <li>• Gift cards available</li>
+      </ul>
+    </div>
+    <div class="md:w-1/2 grid grid-cols-2 gap-3">
+      <!-- example hero thumbnails -->
+      <img src="assets\tattoo-desk.png" alt="Tattoo desk" class="rounded-lg shadow-md object-cover w-full h-44 md:h-56" loading="lazy">
+      <img src="assets\tattoo-artist-working.jpg" alt="Tattoo artist working" class="rounded-lg shadow-md object-cover w-full h-44 md:h-56" loading="lazy">
+      <img src="assets\tattoo-flash.jpg" alt="Tattoo flash" class="rounded-lg shadow-md object-cover w-full h-44 md:h-56" loading="lazy">
+      <img src="assets\studio-interior.webp" alt="Studio interior" class="rounded-lg shadow-md object-cover w-full h-44 md:h-56" loading="lazy">
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="max-w-6xl mx-auto px-6 py-12">
+    <div class="flex items-center justify-between">
+      <h3 class="text-2xl font-bold">Portfolio</h3>
+      <p class="text-sm text-gray-500">Click an image to view details.</p>
+    </div>
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- Gallery items: add or replace images as you like -->
+      <!-- Each item has data attributes for lightbox -->
+      <template id="gallery-template">
+        <div class="group">
+          <button class="w-full aspect-[4/5] overflow-hidden rounded-xl shadow hover:scale-[1.01] transition-transform" data-src="" data-title="" data-desc="">
+            <img src="" alt="" class="w-full h-full object-cover" loading="lazy">
+          </button>
+          <div class="mt-2 text-sm text-gray-700 font-medium">Title</div>
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h3 class="text-2xl font-bold">About the Studio</h3>
+        <p class="mt-4 text-gray-600">Founded by experienced artists with a focus on clean geometry, vibrant color, and safe, comfortable sessions. We use single-use needles, full sterilization, and provide detailed aftercare instructions.</p>
+        <ul class="mt-4 text-sm text-gray-600 list-disc list-inside">
+          <li>Custom designs & consultations</li>
+          <li>Cover-ups & restorations</li>
+          <li>Patch tests and allergy guidance</li>
+        </ul>
+      </div>
+      <div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <p class="text-sm text-gray-600">Hours</p>
+          <div class="mt-2 text-gray-800 font-semibold">
+            Mon — Fri: 11am — 7pm<br>
+            Sat: 11am — 6pm<br>
+            Sun: Closed
+          </div>
+          <p class="mt-4 text-sm text-gray-600">Location</p>
+          <div class="mt-2 font-medium">123 Ink Lane, Suite 5<br>Cityville, CA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="max-w-4xl mx-auto px-6 py-12">
+    <h3 class="text-2xl font-bold">Contact & Booking</h3>
+    <p class="mt-2 text-gray-600">Use the form to tell us about your idea — we'll reply within 48 hours. (This demo form doesn't send email.)</p>
+
+    <form id="contactForm" class="mt-6 bg-white p-6 rounded-lg shadow grid gap-4" onsubmit="return false;">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <label class="block">
+          <span class="text-sm font-medium">Full name</span>
+          <input type="text" id="name" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="Alex Example">
+        </label>
+        <label class="block">
+          <span class="text-sm font-medium">Email</span>
+          <input type="email" id="email" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="you@example.com">
+        </label>
+      </div>
+
+      <label class="block">
+        <span class="text-sm font-medium">Project type</span>
+        <select id="projectType" class="mt-1 block w-full rounded-md border-gray-200 shadow-sm">
+          <option>Custom piece</option>
+          <option>Cover-up</option>
+          <option>Touch-up</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+      <label class="block">
+        <span class="text-sm font-medium">Message / idea</span>
+        <textarea id="message" rows="5" required class="mt-1 block w-full rounded-md border-gray-200 shadow-sm" placeholder="Tell us about size, placement, references, budget..."></textarea>
+      </label>
+
+      <div class="flex items-center gap-4">
+        <button id="submitBtn" class="px-4 py-2 bg-bright-500 text-white rounded-md shadow">Send message</button>
+        <div id="formStatus" class="text-sm text-gray-600"></div>
+      </div>
+    </form>
+
+    <p class="mt-6 text-xs text-gray-500">Tip: connect this form to a backend or a service like Formspree / Netlify Forms to accept real submissions.</p>
+  </section>
+
+  <!-- LIGHTBOX / MODAL -->
+  <div id="lightbox" class="fixed inset-0 hidden items-center justify-center z-50">
+    <div id="lbBackdrop" class="absolute inset-0 bg-black/60" aria-hidden="true"></div>
+    <div class="relative max-w-4xl mx-4 bg-white rounded-xl shadow-lg overflow-hidden">
+      <button id="lbClose" class="absolute top-3 right-3 z-10 p-2 rounded-full bg-white/80 hover:bg-white">&times;</button>
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-2/3 p-4">
+          <img id="lbImage" src="" alt="" class="w-full h-80 object-contain rounded-md bg-gray-50">
+        </div>
+        <div class="md:w-1/3 p-4 border-l">
+          <h4 id="lbTitle" class="font-semibold text-lg">Title</h4>
+          <p id="lbDesc" class="mt-2 text-sm text-gray-600">Description</p>
+          <div class="mt-4">
+            <button id="prevBtn" class="px-3 py-2 mr-2 border rounded">Prev</button>
+            <button id="nextBtn" class="px-3 py-2 border rounded">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-12 border-t border-gray-200">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-sm text-gray-600">© <span id="year"></span> Bright Tattoo Studio — All rights reserved.</div>
+      <div class="text-sm text-gray-600">Follow us on Instagram: <span class="font-medium">@brighttattoostudio</span></div>
+    </div>
+  </footer>
+
+  <script>
+    // Populate current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Basic gallery data (replace these with your own images and captions)
+    const gallery = [
+      { src: 'assets\tattoo1.jpg', title: 'Bold Floral', desc: 'Colorful floral thigh piece with clean linework.' },
+      { src: 'assets\tattoo2.jpg', title: 'Minimal Line', desc: 'Fine-line minimalist wrist tattoo.' },
+      { src: 'assets\tattoo3.jpg', title: 'Traditional Anchor', desc: 'Classic Americana style on forearm.' },
+      { src: 'assets\tattoo4.jpg', title: 'Blackwork Sleeve', desc: 'Bold blackwork and negative space.' },
+      { src: 'assets\tattoo5.jpg', title: 'Color Portrait', desc: 'Vibrant portrait with smooth shading.' },
+      { src: 'assets\tattoo6.jpg', title: 'Geometric', desc: 'Geometric shapes and dotwork.' },
+      { src: 'assets\tattoo7.jpg', title: 'Small Symbols', desc: 'Tiny symbols and script.' },
+      { src: 'assets\tattoo8.jpg', title: 'Floral Backpiece', desc: 'Large floral back piece with color.' }
+    ];
+
+    const galleryGrid = document.querySelector('#portfolio .grid');
+
+    function buildGallery() {
+      gallery.forEach((item, idx) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'group';
+
+        const btn = document.createElement('button');
+        btn.className = 'w-full aspect-[4/5] overflow-hidden rounded-xl shadow hover:scale-[1.01] transition-transform';
+        btn.setAttribute('data-src', item.src);
+        btn.setAttribute('data-title', item.title);
+        btn.setAttribute('data-desc', item.desc);
+        btn.setAttribute('data-idx', idx);
+
+        const img = document.createElement('img');
+        img.src = item.src + '&q=70&w=800&auto=format&fit=crop';
+        img.alt = item.title;
+        img.className = 'w-full h-full object-cover';
+        img.loading = 'lazy';
+
+        btn.appendChild(img);
+        wrapper.appendChild(btn);
+
+        const caption = document.createElement('div');
+        caption.className = 'mt-2 text-sm text-gray-700 font-medium';
+        caption.textContent = item.title;
+        wrapper.appendChild(caption);
+
+        galleryGrid.appendChild(wrapper);
+      });
+    }
+
+    buildGallery();
+
+    // Lightbox logic
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = document.getElementById('lbImage');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbDesc = document.getElementById('lbDesc');
+    const lbClose = document.getElementById('lbClose');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let currentIndex = 0;
+
+    function openLightbox(idx) {
+      const item = gallery[idx];
+      currentIndex = idx;
+      lbImage.src = item.src + '&q=80&w=1600&auto=format&fit=crop';
+      lbImage.alt = item.title;
+      lbTitle.textContent = item.title;
+      lbDesc.textContent = item.desc;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('flex');
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    galleryGrid.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-idx]');
+      if (!btn) return;
+      const idx = Number(btn.getAttribute('data-idx'));
+      openLightbox(idx);
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    document.getElementById('lbBackdrop').addEventListener('click', closeLightbox);
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+      openLightbox(currentIndex);
+    });
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % gallery.length;
+      openLightbox(currentIndex);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    });
+
+    // Contact form: client-side validation + simulated submit
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+
+    function validateEmail(email) {
+      return /\S+@\S+\.\S+/.test(email);
+    }
+
+    submitBtn.addEventListener('click', () => {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        formStatus.textContent = 'Please fill the required fields.';
+        formStatus.className = 'text-sm text-red-600';
+        return;
+      }
+      if (!validateEmail(email)) {
+        formStatus.textContent = 'Please enter a valid email address.';
+        formStatus.className = 'text-sm text-red-600';
+        return;
+      }
+
+      // Simulated submit: replace this section with an actual fetch to your backend / Formspree
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      formStatus.textContent = '';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+        contactForm.reset();
+        formStatus.textContent = 'Thanks — we received your message and will reply within 48 hours.';
+        formStatus.className = 'text-sm text-green-600';
+      }, 900);
+    });
+
+    // Accessibility: trap focus when mobile menu open? (lightweight approach)
+    // (Keep simple to avoid heavy libraries.)
+
+  </script>
+</body>
+</html>
