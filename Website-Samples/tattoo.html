@@ -209,14 +209,14 @@
 
     // Basic gallery data (replace these with your own images and captions)
     const gallery = [
-      { src: 'assets\tattoo1.jpg', title: 'Bold Floral', desc: 'Colorful floral thigh piece with clean linework.' },
-      { src: 'assets\tattoo2.jpg', title: 'Minimal Line', desc: 'Fine-line minimalist wrist tattoo.' },
-      { src: 'assets\tattoo3.jpg', title: 'Traditional Anchor', desc: 'Classic Americana style on forearm.' },
-      { src: 'assets\tattoo4.jpg', title: 'Blackwork Sleeve', desc: 'Bold blackwork and negative space.' },
-      { src: 'assets\tattoo5.jpg', title: 'Color Portrait', desc: 'Vibrant portrait with smooth shading.' },
-      { src: 'assets\tattoo6.jpg', title: 'Geometric', desc: 'Geometric shapes and dotwork.' },
-      { src: 'assets\tattoo7.jpg', title: 'Small Symbols', desc: 'Tiny symbols and script.' },
-      { src: 'assets\tattoo8.jpg', title: 'Floral Backpiece', desc: 'Large floral back piece with color.' }
+      { src: 'assets/tattoo1.jpg', title: 'Bold Floral', desc: 'Colorful floral thigh piece with clean linework.' },
+      { src: 'assets/tattoo2.jpg', title: 'Minimal Line', desc: 'Fine-line minimalist wrist tattoo.' },
+      { src: 'assets/tattoo3.webp', title: 'Traditional Anchor', desc: 'Classic Americana style on forearm.' },
+      { src: 'assets/tattoo4.jpg', title: 'Blackwork Sleeve', desc: 'Bold blackwork and negative space.' },
+      { src: 'assets/tattoo5.jpg', title: 'Color Portrait', desc: 'Vibrant portrait with smooth shading.' },
+      { src: 'assets/tattoo6.jpg', title: 'Geometric', desc: 'Geometric shapes and dotwork.' },
+      { src: 'assets/tattoo7.webp', title: 'Small Symbols', desc: 'Tiny symbols and script.' },
+      { src: 'assets/tattoo8.jpg', title: 'Floral Backpiece', desc: 'Large floral back piece with color.' }
     ];
 
     const galleryGrid = document.querySelector('#portfolio .grid');
@@ -234,7 +234,7 @@
         btn.setAttribute('data-idx', idx);
 
         const img = document.createElement('img');
-        img.src = item.src + '&q=70&w=800&auto=format&fit=crop';
+        img.src = item.src;
         img.alt = item.title;
         img.className = 'w-full h-full object-cover';
         img.loading = 'lazy';
