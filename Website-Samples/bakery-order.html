@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Green Leaf Bakery — Order</title>
+  <meta name="description" content="Ordering mockup for Green Leaf Bakery. Add items to cart, adjust quantities, and checkout (mock)." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card-shadow { box-shadow: 0 6px 24px rgba(2,6,23,0.08); }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 antialiased">
+  <header class="bg-white border-b">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold">GL</div>
+        <div>
+          <h1 class="text-lg font-semibold">Green Leaf Bakery</h1>
+          <p class="text-xs text-slate-500">Order pickup or local delivery</p>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#menu" class="hover:text-emerald-600">Menu</a>
+        <a href="#cart" class="hover:text-emerald-600">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-10 grid lg:grid-cols-3 gap-8">
+    <!-- Product list -->
+    <section class="lg:col-span-2">
+      <div class="flex items-center justify-between">
+        <h2 id="menu" class="text-2xl font-bold">Order Menu</h2>
+        <div class="text-sm text-slate-500">Tap an item to add to cart — adjust quantities from the cart.</div>
+      </div>
+
+      <div class="mt-6 grid sm:grid-cols-2 gap-6" id="products"></div>
+
+      <div class="mt-8 bg-white p-4 rounded-lg card-shadow">
+        <h3 class="font-semibold">Notes & Pickup Time</h3>
+        <div class="mt-3 grid sm:grid-cols-2 gap-3">
+          <input id="pickup-time" type="time" class="p-2 border rounded-md" />
+          <input id="customer-note" type="text" placeholder="Add a note (e.g., no nuts)" class="p-2 border rounded-md" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart sidebar -->
+    <aside id="cart" class="lg:col-span-1 sticky top-6">
+      <div class="bg-white p-4 rounded-lg card-shadow">
+        <h3 class="text-lg font-bold">Your Cart</h3>
+        <div id="cart-items" class="mt-4 space-y-3 text-sm text-slate-700">
+          <p class="text-slate-500">Cart is empty — add something tasty!</p>
+        </div>
+
+        <div class="mt-4 border-t pt-4">
+          <div class="flex items-center justify-between text-sm">
+            <div>Subtotal</div>
+            <div id="subtotal">$0.00</div>
+          </div>
+          <div class="flex items-center justify-between text-sm mt-2">
+            <div>Estimated delivery</div>
+            <div id="delivery">$0.00</div>
+          </div>
+          <div class="flex items-center justify-between font-semibold text-lg mt-3">
+            <div>Total</div>
+            <div id="total">$0.00</div>
+          </div>
+
+          <button id="checkout-btn" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-md">Proceed to Checkout</button>
+          <button id="clear-cart" class="mt-2 w-full border py-2 rounded-md text-sm">Clear Cart</button>
+        </div>
+      </div>
+
+      <div class="mt-4 text-xs text-slate-500">This is a mock checkout — no real payments are processed. Replace with your payment provider integration.</div>
+    </aside>
+  </main>
+
+  <!-- Checkout modal (hidden until checkout) -->
+  <div id="checkout-modal" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg w-full max-w-2xl p-6">
+      <div class="flex items-start justify-between">
+        <h3 class="text-xl font-bold">Checkout</h3>
+        <button id="close-checkout" class="text-slate-500">Close</button>
+      </div>
+
+      <div class="mt-4 grid sm:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold">Pickup / Delivery</h4>
+          <div class="mt-2 space-y-2">
+            <label class="flex items-center gap-2"><input type="radio" name="fulfillment" value="pickup" checked /> Pickup</label>
+            <label class="flex items-center gap-2"><input type="radio" name="fulfillment" value="delivery" /> Delivery</label>
+            <input id="address" type="text" placeholder="Delivery address (if delivery)" class="mt-2 p-2 border rounded-md" />
+          </div>
+
+          <h4 class="mt-4 font-semibold">Contact</h4>
+          <input id="customer-name" type="text" placeholder="Full name" class="mt-2 p-2 border rounded-md w-full" />
+          <input id="customer-phone" type="tel" placeholder="Phone number" class="mt-2 p-2 border rounded-md w-full" />
+        </div>
+
+        <div>
+          <h4 class="font-semibold">Payment (Mock)</h4>
+          <div class="mt-2 space-y-2 text-sm text-slate-700">
+            <label class="flex items-center gap-2"><input type="radio" name="payment" value="card" checked /> Credit / Debit Card</label>
+            <label class="flex items-center gap-2"><input type="radio" name="payment" value="cash" /> Cash (pay in-store)</label>
+          </div>
+
+          <div id="card-form" class="mt-4">
+            <input id="card-number" type="text" placeholder="Card number" class="p-2 border rounded-md w-full" />
+            <div class="mt-2 flex gap-2">
+              <input id="card-exp" type="text" placeholder="MM/YY" class="p-2 border rounded-md w-1/2" />
+              <input id="card-cvc" type="text" placeholder="CVC" class="p-2 border rounded-md w-1/2" />
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <div class="flex items-center justify-between text-sm text-slate-600">
+              <div>Order total</div>
+              <div id="checkout-total">$0.00</div>
+            </div>
+            <button id="place-order" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-md">Place Order (Mock)</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="checkout-message" class="mt-4 text-sm text-emerald-700 hidden">Thank you — your mock order has been placed.</div>
+    </div>
+  </div>
+
+  <script>
+    // Sample product data
+    const PRODUCTS = [
+      { id: 'sourdough', name: 'Sourdough Loaf', price: 7.5, type: 'bread', img: 'https://images.unsplash.com/photo-1541599540903-216a46ca2a9b?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder' },
+      { id: 'croissant', name: 'Butter Croissant', price: 3.25, type: 'pastry', img: 'https://images.unsplash.com/photo-1508186358-2a9c4a3f0f0a?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder' },
+      { id: 'latte', name: 'Latte', price: 4.0, type: 'drinks', img: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder' },
+      { id: 'muffin', name: 'Blueberry Muffin', price: 2.75, type: 'pastry', img: 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder' },
+      { id: 'wholewheat', name: 'Whole Wheat Loaf', price: 6.0, type: 'bread', img: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder' }
+    ];
+
+    // Cart state
+    let cart = {};
+
+    const productsEl = document.getElementById('products');
+    const cartItemsEl = document.getElementById('cart-items');
+    const subtotalEl = document.getElementById('subtotal');
+    const deliveryEl = document.getElementById('delivery');
+    const totalEl = document.getElementById('total');
+    const checkoutTotalEl = document.getElementById('checkout-total');
+
+    function money(v){ return '$' + v.toFixed(2); }
+
+    function renderProducts(){
+      productsEl.innerHTML = '';
+      PRODUCTS.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'bg-white p-4 rounded-lg card-shadow flex gap-4 items-center';
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" class="w-20 h-20 object-cover rounded-md" />
+          <div class="flex-1">
+            <h4 class="font-semibold">${p.name}</h4>
+            <div class="text-sm text-slate-500 mt-1">${p.type}</div>
+            <div class="mt-3 flex items-center justify-between">
+              <div class="text-lg font-medium">${money(p.price)}</div>
+              <button data-id="${p.id}" class="add-btn px-3 py-1 rounded-md border text-sm">Add</button>
+            </div>
+          </div>
+        `;
+        productsEl.appendChild(card);
+      });
+
+      document.querySelectorAll('.add-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = e.currentTarget.dataset.id; addToCart(id); 
+        });
+      });
+    }
+
+    function addToCart(id, qty=1){
+      if(!cart[id]) cart[id] = 0;
+      cart[id] += qty;
+      renderCart();
+    }
+
+    function removeFromCart(id){ delete cart[id]; renderCart(); }
+
+    function updateQty(id, qty){
+      if(qty <= 0) removeFromCart(id);
+      else { cart[id] = qty; }
+      renderCart();
+    }
+
+    function calcTotals(){
+      let subtotal = 0;
+      Object.keys(cart).forEach(id => {
+        const p = PRODUCTS.find(x=>x.id===id);
+        subtotal += p.price * cart[id];
+      });
+      // delivery mock: $3 if delivery selected, else 0
+      const fulfillment = document.querySelector('input[name="fulfillment"]:checked')?.value || 'pickup';
+      const delivery = fulfillment === 'delivery' && subtotal > 0 ? 3.00 : 0.00;
+      const total = subtotal + delivery;
+      return {subtot: subtotal, delivery, total};
+    }
+
+    function renderCart(){
+      cartItemsEl.innerHTML = '';
+      const ids = Object.keys(cart);
+      if(ids.length === 0){ cartItemsEl.innerHTML = '<p class="text-slate-500">Cart is empty — add something tasty!</p>'; }
+      else{
+        ids.forEach(id => {
+          const p = PRODUCTS.find(x=>x.id===id);
+          const qty = cart[id];
+          const row = document.createElement('div');
+          row.className = 'flex items-center justify-between gap-3';
+          row.innerHTML = `
+            <div class="flex items-center gap-3">
+              <img src="${p.img}" alt="${p.name}" class="w-12 h-12 object-cover rounded-md" />
+              <div>
+                <div class="font-medium">${p.name}</div>
+                <div class="text-xs text-slate-500">${money(p.price)} each</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button data-id="${id}" class="dec px-2 py-1 border rounded">-</button>
+              <div class="w-6 text-center">${qty}</div>
+              <button data-id="${id}" class="inc px-2 py-1 border rounded">+</button>
+            </div>
+          `;
+          cartItemsEl.appendChild(row);
+        });
+      }
+
+      const {subtot, delivery, total} = calcTotals();
+      subtotalEl.textContent = money(subtot);
+      deliveryEl.textContent = money(delivery);
+      totalEl.textContent = money(total);
+      checkoutTotalEl.textContent = money(total);
+
+      // wire up inc/dec
+      document.querySelectorAll('.inc').forEach(b => b.addEventListener('click', e => { const id=e.currentTarget.dataset.id; updateQty(id, cart[id]+1); }));
+      document.querySelectorAll('.dec').forEach(b => b.addEventListener('click', e => { const id=e.currentTarget.dataset.id; updateQty(id, cart[id]-1); }));
+    }
+
+    // Clear cart
+    document.getElementById('clear-cart').addEventListener('click', () => { cart = {}; renderCart(); });
+
+    // Checkout modal
+    const checkoutModal = document.getElementById('checkout-modal');
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if(Object.keys(cart).length === 0){ alert('Add items to cart before checking out.'); return; }
+      checkoutModal.classList.remove('hidden');
+      checkoutModal.classList.add('flex');
+    });
+    document.getElementById('close-checkout').addEventListener('click', () => { checkoutModal.classList.add('hidden'); checkoutModal.classList.remove('flex'); });
+
+    // Place order (mock)
+    document.getElementById('place-order').addEventListener('click', () => {
+      // gather a few fields and simulate success
+      const name = document.getElementById('customer-name').value.trim();
+      if(!name){ alert('Please enter your name.'); return; }
+      // pretend to send to server
+      document.getElementById('checkout-message').classList.remove('hidden');
+      setTimeout(() => {
+        // clear cart
+        cart = {};
+        renderCart();
+        document.getElementById('checkout-message').textContent = 'Thank you — your mock order has been placed.';
+      }, 800);
+    });
+
+    // Toggle card form visibility based on payment method
+    document.querySelectorAll('input[name="payment"]').forEach(r => r.addEventListener('change', (e) => {
+      document.getElementById('card-form').style.display = e.target.value === 'card' ? 'block' : 'none';
+    }));
+
+    // Update totals when fulfillment changes
+    document.querySelectorAll('input[name="fulfillment"]').forEach(r => r.addEventListener('change', () => { renderCart(); }));
+
+    // initial render
+    renderProducts(); renderCart();
+  </script>
+</body>
+</html>
